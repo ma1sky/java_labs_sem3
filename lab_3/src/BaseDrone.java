@@ -77,5 +77,6 @@ abstract class BaseDrone implements Drone {
 
     @Override
     public abstract String getType();
+
 }
 
