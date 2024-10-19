@@ -51,7 +51,7 @@ public class Logs {
             writer.write("RemoveTotalTime: " + removeTimer + '\n');
             writer.write("Finish program: " + LocalDateTime.now());
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
+            ExceptionHandler.logException(e, fileName);
         }
     }
 
@@ -86,7 +86,7 @@ public class Logs {
 
             for (int i = 0; i < count; i++) {
                 long timeStart = System.nanoTime();
-                DroneUtils.addHashDrone(droneMap);
+                DroneUtils.addHashDrone(droneMap, i);
                 long timeEnd = System.nanoTime();
                 durationsListAdds.add(timeEnd - timeStart);
                 writer.write("Add, ID: " + i + " , Duration: " + durationsListAdds.get(i) + "ns" + '\n');
@@ -113,7 +113,7 @@ public class Logs {
             writer.write("RemoveTotalTime: " + removeTimer + '\n');
             writer.write("Finish program: " + LocalDateTime.now());
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
+            ExceptionHandler.logException(e, fileName);
         }
     }
 }

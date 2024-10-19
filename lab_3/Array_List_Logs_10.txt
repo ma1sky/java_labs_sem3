@@ -1,0 +1,20 @@
+Start program: 2024-10-19T13:47:21.904429300
+ArrayList with 10 items:
+Add, ID: 0 , Duration: 106200ns
+Add, ID: 1 , Duration: 59800ns
+Add, ID: 2 , Duration: 41900ns
+Add, ID: 3 , Duration: 6200ns
+Add, ID: 4 , Duration: 4900ns
+Add, ID: 5 , Duration: 37000ns
+Add, ID: 6 , Duration: 13400ns
+Add, ID: 7 , Duration: 6700ns
+Add, ID: 8 , Duration: 8100ns
+Add, ID: 9 , Duration: 5100ns
+AddTotalCount: 10
+AddMedianTime: 10750.0
+AddTotalTime: 289300.0
+Remove, ID: 0 , Duration: 15800ns
+RemoveTotalCount: 1
+RemoveMedianTime: 15800.0
+RemoveTotalTime: 15800.0
+Finish program: 2024-10-19T13:47:21.912918500
