@@ -9,24 +9,29 @@ import java.util.HashMap;
 
 
 public class Logs {
+    static Random random = new Random();
+    static int addCounter = 0;
+    static int removeCounter = 0;
+    static double addTimer = 0;
+    static double removeTimer = 0;
+    static long timeStart = 0;
+    static long timeEnd = 0;
+
     public static void writeArrayListLogs(ArrayList<BaseDrone> droneArrayList, int count) {
+        removeCounter = 0;
+        addTimer = 0;
         String fileName = "Array_List_Logs_" + count + ".txt";
         ArrayList<Long> durationsListAdds = new ArrayList<Long>();
         ArrayList<Long> durationsListRemoves = new ArrayList<Long>();
-
-        Random random = new Random();
-        int addCounter = 0;
-        int removeCounter = 0;
         int removes = count / 10;
-        double addTimer = 0;
-        double removeTimer = 0;
+
         try (FileWriter writer = new FileWriter(fileName)) {
             writer.write("Start program: " + LocalDateTime.now() + '\n');
             writer.write("ArrayList with " + count + " items:" + '\n');
             for (int i = 0; i < count; i++) {
-                long timeStart = System.nanoTime();
+                timeStart = System.nanoTime();
                 DroneUtils.addDrone(droneArrayList);
-                long timeEnd = System.nanoTime();
+                timeEnd = System.nanoTime();
                 durationsListAdds.add(timeEnd - timeStart);
                 writer.write("Add, ID: " + i + " , Duration: " + durationsListAdds.get(i) + "ns" + '\n');
                 addCounter++;
@@ -37,9 +42,9 @@ public class Logs {
             writer.write("AddTotalTime: " + addTimer + '\n');
 
             for (int i = 0; i < removes; i++) {
-                long timeStart = System.nanoTime();
+                timeStart = System.nanoTime();
                 DroneUtils.removeDrone(droneArrayList, random.nextInt(droneArrayList.size()));
-                long timeEnd = System.nanoTime();
+                timeEnd = System.nanoTime();
                 durationsListRemoves.add(timeEnd - timeStart);
 
                 writer.write("Remove, ID: " + i + " , Duration: " + durationsListRemoves.get(i) + "ns" + '\n');
@@ -73,21 +78,20 @@ public class Logs {
         ArrayList<Long> durationsListAdds = new ArrayList<>();
         ArrayList<Long> durationsListRemoves = new ArrayList<>();
 
-        Random random = new Random();
-        int addCounter = 0;
-        int removeCounter = 0;
+        addCounter = 0;
+        removeCounter = 0;
+        addTimer = 0;
+        removeTimer = 0;
         int removes = count / 10;
-        double addTimer = 0;
-        double removeTimer = 0;
 
         try (FileWriter writer = new FileWriter(fileName)) {
             writer.write("Start program: " + LocalDateTime.now() + '\n');
             writer.write("HashMap with " + count + " items:" + '\n');
 
             for (int i = 0; i < count; i++) {
-                long timeStart = System.nanoTime();
+                timeStart = System.nanoTime();
                 DroneUtils.addHashDrone(droneMap, i);
-                long timeEnd = System.nanoTime();
+                timeEnd = System.nanoTime();
                 durationsListAdds.add(timeEnd - timeStart);
                 writer.write("Add, ID: " + i + " , Duration: " + durationsListAdds.get(i) + "ns" + '\n');
                 addCounter++;
@@ -98,10 +102,10 @@ public class Logs {
             writer.write("AddTotalTime: " + addTimer + '\n');
 
             for (int i = 0; i < removes; i++) {
-                long timeStart = System.nanoTime();
+                timeStart = System.nanoTime();
                 int randomKey = random.nextInt(count);
                 droneMap.remove(randomKey);
-                long timeEnd = System.nanoTime();
+                timeEnd = System.nanoTime();
                 durationsListRemoves.add(timeEnd - timeStart);
 
                 writer.write("Remove, ID: " + i + " , Duration: " + durationsListRemoves.get(i) + "ns" + '\n');
