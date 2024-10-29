@@ -1,0 +1,20 @@
+Start program: 2024-10-22T23:45:49.880142400
+HashMap with 10 items:
+Add, ID: 0 , Duration: 29800ns
+Add, ID: 1 , Duration: 8100ns
+Add, ID: 2 , Duration: 5100ns
+Add, ID: 3 , Duration: 10300ns
+Add, ID: 4 , Duration: 63700ns
+Add, ID: 5 , Duration: 6200ns
+Add, ID: 6 , Duration: 4800ns
+Add, ID: 7 , Duration: 6900ns
+Add, ID: 8 , Duration: 3900ns
+Add, ID: 9 , Duration: 4000ns
+AddTotalCount: 10
+AddMedianTime: 6550.0
+AddTotalTime: 142800.0
+Remove, ID: 0 , Duration: 23600ns
+RemoveTotalCount: 1
+RemoveMedianTime: 23600.0
+RemoveTotalTime: 23600.0
+Finish program: 2024-10-22T23:45:49.881139600
