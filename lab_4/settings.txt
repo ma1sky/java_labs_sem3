@@ -1,0 +1,1 @@
+login=Artem password=Privet123 group=root debugging=true autotests=true

@@ -1,10 +1,11 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 
 public class ExceptionHandler {
-    public static void logException(Exception e, String fileName) {
-        try (FileWriter writer = new FileWriter(fileName, true)) { // true для добавления в конец файла
+    public static void logException(Exception e, Path fileName) {
+        try (FileWriter writer = new FileWriter(String.valueOf(fileName), true)) {
             writer.write("Exception occurred at: " + LocalDateTime.now() + '\n');
             writer.write("Exception type: " + e.getClass().getName() + '\n');
             writer.write("Message: " + e.getMessage() + '\n');
@@ -18,7 +19,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static void handleException(Exception e, String fileName) {
+    public static void handleException(Exception e, Path fileName) {
         System.err.println("An exception occurred: " + e.getClass().getName());
         System.err.println("Message: " + e.getMessage());
         e.printStackTrace();

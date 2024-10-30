@@ -3,46 +3,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
-public class DroneUtils {
-    public static ArrayList<BaseDrone> createDroneArrayList() {
-        return new ArrayList<BaseDrone>();
-    }
-
-    public static HashMap<Integer, BaseDrone> createDroneHashMap() {
-        return new HashMap<Integer, BaseDrone>();
-    }
-
-    public static void fillDroneList(ArrayList<BaseDrone> droneList, int numberOfDrones) {
-        Random random = new Random();
-
-        for (int i = 0; i < numberOfDrones; i++) {
-            droneList.add(createRandomDrone());
-        }
-    }
-
-    public static void addDrone(ArrayList<BaseDrone> droneList){
-        DroneUtils.fillDroneList(droneList, 1);
-    }
-
-    public static void removeDrone(ArrayList<BaseDrone> droneArrayList, int index) {
-        droneArrayList.remove(index);
-    }
-
-    public static void fillDroneMap(HashMap<Integer, BaseDrone> droneMap, int numberOfDrones) {
-        for (int i = 0; i < numberOfDrones; i++) {
-            droneMap.put(i, createRandomDrone());
-        }
-    }
-
-    public static void addHashDrone(HashMap<Integer, BaseDrone> droneMap, int id) {
-        BaseDrone drone = createRandomDrone();
-        droneMap.put(id, drone);
-    }
-
-    private static BaseDrone createRandomDrone() {
+public class Controller {
+    public static BaseDrone createRandomDrone() {
         Random random = new Random();
         return switch (random.nextInt(4)) {
             case 0 ->
@@ -104,11 +68,6 @@ public class DroneUtils {
             default -> throw new IllegalStateException("Unexpected value: " + random.nextInt(4));
         };
     }
-
-    public static void removeDrone(HashMap<Integer, BaseDrone> droneMap, int key) {
-        droneMap.remove(key);
-    }
-
     public static void writeDataBase(ArrayList<BaseDrone> droneArrayList, Path path) throws IOException {
         ArrayList<String> droneStrings = new ArrayList<String>();
 
@@ -117,18 +76,14 @@ public class DroneUtils {
         }
 
         if (Files.exists(path)) {
-            Files.write(path, droneStrings, StandardOpenOption.APPEND);
+            Files.write(path, droneStrings, StandardOpenOption.TRUNCATE_EXISTING);
         } else {
             Files.createFile(path);
             Files.write(path, droneStrings);
         }
     }
-
-
     public static ArrayList<BaseDrone> readDataBase(Path path) throws IOException {
         ArrayList<BaseDrone> droneArrayList = new ArrayList<>();
-        //String[] parts = str.split(", ");
-
         String[] lines = Files.readAllLines(path).toArray(new String[0]);
 
         for (String line : lines) {

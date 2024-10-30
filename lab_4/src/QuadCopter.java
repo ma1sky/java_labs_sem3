@@ -32,7 +32,6 @@ class QuadCopter extends BaseDrone {
     }
 
     public QuadCopter(String[] parts) {
-        //String[] parts = str.split(", ");
         super(Double.parseDouble(parts[0].split("=")[1]),
                 Double.parseDouble(parts[1].split("=")[1]),
                 Double.parseDouble(parts[2].split("=")[1]),

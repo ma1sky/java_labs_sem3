@@ -1,14 +1,11 @@
-import java.io.OutputStream;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.time.*;
 import java.util.Collections;
 import java.util.Random;
-import java.util.HashMap;
-import java.nio.file.Files;
+
 
 public class Logs {
     static Random random = new Random();
@@ -32,7 +29,7 @@ public class Logs {
             writer.write("ArrayList with " + count + " items:" + '\n');
             for (int i = 0; i < count; i++) {
                 timeStart = System.nanoTime();
-                DroneUtils.addDrone(droneArrayList);
+                droneArrayList.add(Controller.createRandomDrone());
                 timeEnd = System.nanoTime();
                 durationsListAdds.add(timeEnd - timeStart);
                 writer.write("Add, ID: " + i + " , Duration: " + durationsListAdds.get(i) + "ns" + '\n');
@@ -45,7 +42,7 @@ public class Logs {
 
             for (int i = 0; i < removes; i++) {
                 timeStart = System.nanoTime();
-                DroneUtils.removeDrone(droneArrayList, random.nextInt(droneArrayList.size()));
+                droneArrayList.remove(random.nextInt(droneArrayList.size()));
                 timeEnd = System.nanoTime();
                 durationsListRemoves.add(timeEnd - timeStart);
 
@@ -58,10 +55,9 @@ public class Logs {
             writer.write("RemoveTotalTime: " + removeTimer + '\n');
             writer.write("Finish program: " + LocalDateTime.now());
         } catch (IOException e) {
-            ExceptionHandler.logException(e, fileName);
+            ExceptionHandler.logException(e, Path.of(fileName));
         }
     }
-
     public static double calcMedian(ArrayList<Long> list) {
         Collections.sort(list);
 
@@ -74,54 +70,5 @@ public class Logs {
             return (middle1 + middle2) / 2.0;
         }
     }
-
-    public static void writeHashMapLogs(HashMap<Integer, BaseDrone> droneMap, int count) {
-        String fileName = "HashMap_Logs_" + count + ".txt";
-        ArrayList<Long> durationsListAdds = new ArrayList<>();
-        ArrayList<Long> durationsListRemoves = new ArrayList<>();
-
-        addCounter = 0;
-        removeCounter = 0;
-        addTimer = 0;
-        removeTimer = 0;
-        int removes = count / 10;
-
-        try (FileWriter writer = new FileWriter(fileName)) {
-            writer.write("Start program: " + LocalDateTime.now() + '\n');
-            writer.write("HashMap with " + count + " items:" + '\n');
-
-            for (int i = 0; i < count; i++) {
-                timeStart = System.nanoTime();
-                DroneUtils.addHashDrone(droneMap, i);
-                timeEnd = System.nanoTime();
-                durationsListAdds.add(timeEnd - timeStart);
-                writer.write("Add, ID: " + i + " , Duration: " + durationsListAdds.get(i) + "ns" + '\n');
-                addCounter++;
-                addTimer += durationsListAdds.get(i);
-            }
-            writer.write("AddTotalCount: " + addCounter + '\n');
-            writer.write("AddMedianTime: " + calcMedian(durationsListAdds) + '\n');
-            writer.write("AddTotalTime: " + addTimer + '\n');
-
-            for (int i = 0; i < removes; i++) {
-                timeStart = System.nanoTime();
-                int randomKey = random.nextInt(count);
-                droneMap.remove(randomKey);
-                timeEnd = System.nanoTime();
-                durationsListRemoves.add(timeEnd - timeStart);
-
-                writer.write("Remove, ID: " + i + " , Duration: " + durationsListRemoves.get(i) + "ns" + '\n');
-                removeCounter++;
-                removeTimer += durationsListRemoves.get(i);
-            }
-            writer.write("RemoveTotalCount: " + removeCounter + '\n');
-            writer.write("RemoveMedianTime: " + calcMedian(durationsListRemoves) + '\n');
-            writer.write("RemoveTotalTime: " + removeTimer + '\n');
-            writer.write("Finish program: " + LocalDateTime.now());
-        } catch (IOException e) {
-            ExceptionHandler.logException(e, fileName);
-        }
-    }
-
 
 }
