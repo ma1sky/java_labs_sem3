@@ -1,0 +1,71 @@
+Program started at: 2024-10-31T01:36:53.060108200
+Program end: 2024-10-31T01:36:59.398158400
+Program started at: 2024-10-31T02:06:07.398422800
+Program started at: 2024-10-31T02:08:23.784214800
+Exception occurred at: 2024-10-31T02:08:24.872509800
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Program started at: 2024-10-31T02:11:25.515629200
+Exception occurred at: 2024-10-31T02:11:27.026329100
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Program started at: 2024-10-31T02:11:59.170681600
+Exception occurred at: 2024-10-31T02:12:00.520405
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Program started at: 2024-10-31T02:12:48.611574
+Exception occurred at: 2024-10-31T02:12:50.140356800
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Exception occurred at: 2024-10-31T02:12:52.265482900
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Exception occurred at: 2024-10-31T02:12:54.053725900
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Exception occurred at: 2024-10-31T02:12:54.638859800
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------
+Exception occurred at: 2024-10-31T02:12:55.174901300
+Exception type: java.lang.IllegalArgumentException
+Message: 
+Line is empty. Write something please.
+Stack trace: 
+	at Controller.scanString(Controller.java:116)
+	at Main.main(Main.java:13)
+---------------------------------------

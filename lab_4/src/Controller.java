@@ -3,9 +3,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 import java.util.Random;
+import java.util.Scanner;
+
 
 public class Controller {
+    public static Path logs = Path.of("logs.txt");
+
     public static BaseDrone createRandomDrone() {
         Random random = new Random();
         return switch (random.nextInt(4)) {
@@ -97,8 +102,71 @@ public class Controller {
                         throw new IllegalStateException("Unexpected value: " + Integer.parseInt(parts[0].split(" ")[0]));
             }
         }
-
         return droneArrayList;
     }
 
+    public static String scanString() {
+        Scanner sc = new Scanner(System.in);
+        String str = new String();
+        System.out.print("Write text line: ");
+        while (true) {
+            try{
+                str = sc.nextLine();
+                if (str.isEmpty()) {
+                    throw new IllegalArgumentException("\nLine is empty. Write something please.");
+                }
+                if (str.replaceAll("(?U)[\\pP\\s]", "").trim().isEmpty()) {
+                    throw new IllegalArgumentException("\nOnly symbols of punctuation.");
+                } else { break; }
+            } catch (IllegalArgumentException e) {
+                ExceptionHandler.handleException(e, logs);
+            }
+
+        }
+            return str;
+    }
+
+    public static void mainMenu(ArrayList<BaseDrone> drones, Path settings, Path data, Path exceptionLogs) {
+        Random random = new Random();
+        int choice = 1;
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            User user = new User(User.readSettingsFromFile(settings));
+            user.auth();
+            View.printGreeting(user.getLogin());
+            switch (user.getGroup()) {
+                case "root" -> {
+                    while (choice != 0) {
+                        View.printMenu(user);
+                        choice = sc.nextInt();
+                        switch (choice) {
+                            case 1 -> user.setDebugging(!user.isDebugging());
+                            case 2 -> user.setAutotests(!user.isAutotests());
+                            case 3 -> drones = Controller.readDataBase(data);
+                            case 4 -> Controller.writeDataBase(drones, data);
+                            case 5 -> drones.add(Controller.createRandomDrone());
+                            case 6 -> drones.remove(random.nextInt(drones.size()));
+                        }
+                    }
+                }
+                case "user" -> {
+                    while (choice != 0) {
+                        View.printMenu(user);
+                        choice = sc.nextInt();
+                        switch (choice) {
+                            case 1 -> drones = Controller.readDataBase(data);
+                            case 2 -> Controller.writeDataBase(drones, data);
+                            case 3 -> drones.add(Controller.createRandomDrone());
+                            case 4 -> drones.remove(random.nextInt(drones.size()));
+                        }
+
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            ExceptionHandler.handleException(e, exceptionLogs);
+        }
+    }
 }
