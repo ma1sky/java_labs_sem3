@@ -8,11 +8,12 @@ public class Main {
         Path data= Path.of("dataBase.txt");
         Path settings = Path.of("settings.txt");
         ArrayList<BaseDrone> drones = new ArrayList<>();
-
-        Logs.writeTime("Program started at: ", logs);
-        String privet = Controller.scanString();
-
-        Controller.mainMenu(drones, settings, data, logs);
-        Logs.writeTime("Program end: ", logs);
+        try {
+            Logs.writeTime("Program started at: ", logs);
+            Controller.mainMenu(drones, settings, data, logs);
+            Logs.writeTime("Program end: ", logs);
+        } catch (IOException ex) {
+            ExceptionHandler.handleException(ex, logs);
+        }
     }
 }

@@ -11,8 +11,8 @@ abstract class BaseDrone implements Drone {
     protected boolean weatherResistant;
 
     public BaseDrone(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
-                         double loadCapacity, double maxHeight, String powerType, double size,
-                         String takeoffMethod, boolean weatherResistant) {
+                     double loadCapacity, double maxHeight, String powerType, double size,
+                     String takeoffMethod, boolean weatherResistant) {
         this.maxRange = maxRange;
         this.maxFlightTime = maxFlightTime;
         this.cruiseSpeed = cruiseSpeed;
@@ -81,4 +81,3 @@ abstract class BaseDrone implements Drone {
     @Override
     public abstract String toString();
 }
-
