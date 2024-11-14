@@ -1,4 +1,7 @@
+import java.io.EOFException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -144,12 +147,7 @@ public class Controller {
             User user = new User(User.readSettingsFromFile(settings));
             user.auth();
             if (user.getGroup() == "root" && user.isAutotests()) {
-                Autotests.testConstructorWithParameters();
-                Autotests.testConstructorWithStringArray();
-                Autotests.testGetType();
-                Autotests.testToString();
-                Autotests.testGetPurpose();
-                Autotests.writeLogToFile();
+                autotestsStart();
             }
 
             View.printGreeting(user.getLogin());
@@ -159,12 +157,12 @@ public class Controller {
                         View.printMenu(user);
                         choice = sc.nextInt();
                         switch (choice) {
-                            case 1 -> drones = Controller.readDataBase(data);
-                            case 2 -> Controller.writeDataBase(drones, data);
-                            case 3 -> Controller.addDrone(drones);
-                            case 4 -> Controller.removeDrone(drones);
+                            case 1 -> drones = Controller.readDataBaseBIN(data);
+                            case 2 -> writeDataBaseBIN(drones, data);
+                            case 3 -> addDrone(drones);
+                            case 4 -> removeDrone(drones);
                             case 5 -> View.printDrones(drones);
-                            case 6 -> Controller.changeDrone(drones);
+                            case 6 -> changeDrone(drones);
                         }
 
                     }
@@ -174,12 +172,12 @@ public class Controller {
                         View.printMenu(user);
                         choice = sc.nextInt();
                         switch (choice) {
-                            case 1 -> drones = Controller.readDataBase(data);
-                            case 2 -> Controller.writeDataBase(drones, data);
-                            case 3 -> Controller.addDrone(drones);
-                            case 4 -> Controller.removeDrone(drones);
+                            case 1 -> drones = readDataBase(data);
+                            case 2 -> writeDataBase(drones, data);
+                            case 3 -> addDrone(drones);
+                            case 4 -> removeDrone(drones);
                             case 5 -> View.printDrones(drones);
-                            case 6 -> Controller.changeDrone(drones);
+                            case 6 -> changeDrone(drones);
                             case 7 -> user.setDebugging(!user.isDebugging());
                             case 8 -> user.setAutotests(!user.isAutotests());
                         }
@@ -187,7 +185,7 @@ public class Controller {
                 }
             }
 
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             ExceptionHandler.handleException(e, exceptionLogs);
         }
     }
@@ -220,12 +218,13 @@ public class Controller {
                 input = sn.nextLine();
                 num = Integer.parseInt(input);
                 if (llim > num || num > hlim) {throw new IllegalArgumentException("Number must be >" + llim + "and <" + hlim);}
-                return num;
+                break;
             }
             catch (InputMismatchException | NumberFormatException ex) {
                 ExceptionHandler.handleException(ex, logs);
             }
         }
+        return num;
     }
 
     public static boolean scanBoolean(String desc) {
@@ -322,5 +321,41 @@ public class Controller {
         Autotests.testToString();
         Autotests.testGetPurpose();
         Autotests.writeLogToFile();
+    }
+
+    public static ArrayList<BaseDrone> readDataBaseBIN(Path path) throws IOException, ClassNotFoundException {
+        ArrayList<BaseDrone> droneArrayList = new ArrayList<>();
+
+        if (Files.exists(path)) {
+            try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path))) {
+                while (true) {
+                    try {
+                        BaseDrone drone = (BaseDrone) ois.readObject();
+                        droneArrayList.add(drone);
+                    } catch (EOFException e) {
+                        break;
+                    }
+                }
+            }
+        } else {
+            throw new IOException("File doesnt exist.");
+        }
+
+        return droneArrayList;
+    }
+
+    public static void writeDataBaseBIN(ArrayList<BaseDrone> droneArrayList, Path path) throws IOException {
+        if (Files.exists(path)) {
+            Files.delete(path);
+        }
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path))) {
+            for (BaseDrone drone : droneArrayList) {
+                oos.writeObject(drone);
+            }
+        }
+
+        Logs.writeTime("DataBase writing successful.", logs);
+        System.out.println("DataBase writing successful.");
     }
 }

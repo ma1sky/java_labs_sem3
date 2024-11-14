@@ -1,7 +1,5 @@
-import java.io.Serializable;
-
-interface Drone extends Serializable {
-    int getType();
+interface Drone {
+    String getType();
     String getPurpose();
     double getMaxRange();
     double getMaxFlightTime();
@@ -13,7 +11,6 @@ interface Drone extends Serializable {
     double getSize();
     String getTakeoffMethod();
     boolean isWeatherResistant();
-    String toString();
 
     default double calculateReducedFlightTime() {
         double maxFlightTime = getMaxFlightTime();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws IOException {
         Path logs = Path.of("logs.txt");
-        Path data= Path.of("dataBase.txt");
+        Path data= Path.of("dataBase.bin");
         Path settings = Path.of("settings.txt");
         ArrayList<BaseDrone> drones = new ArrayList<>();
         try {

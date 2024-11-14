@@ -1,5 +1,10 @@
-class Plane extends BaseDrone {
+import java.io.Serial;
+import java.io.Serializable;
+
+class Plane extends BaseDrone implements Serializable {
     private final double wingSpan;
+    @Serial
+    private static final long serialVersionUID = 2L;
 
     public Plane(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
                  double loadCapacity, double maxHeight, String powerType, double size,

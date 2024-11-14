@@ -1,5 +1,9 @@
+import java.io.Serial;
+
 class HybridDrone extends BaseDrone {
     private final double batteryCapacity;
+    @Serial
+    private static final long serialVersionUID = 4L;
 
     public HybridDrone(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
                        double loadCapacity, double maxHeight, String powerType, double size,

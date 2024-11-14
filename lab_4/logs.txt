@@ -69,3 +69,32 @@ Stack trace:
 	at Controller.scanString(Controller.java:116)
 	at Main.main(Main.java:13)
 ---------------------------------------
+Program started at: 2024-11-13T01:59:50.023918800
+DataBase reading successful.2024-11-13T01:59:59.591836200
+Program end: 2024-11-13T02:00:10.068271700
+Program started at: 2024-11-13T02:02:00.145290500
+DataBase reading successful.2024-11-13T02:02:09.568686300
+DataBase writing successful.2024-11-13T02:02:11.237803700
+Program end: 2024-11-13T02:02:15.243479700
+Program started at: 2024-11-13T02:03:05.050906900
+DataBase writing successful.2024-11-13T02:03:35.993538800
+Program end: 2024-11-13T02:03:40.332887900
+Program started at: 2024-11-13T02:04:20.143590800
+Program started at: 2024-11-13T02:07:04.722120200
+DataBase writing successful.2024-11-13T02:07:40.875226900
+Program end: 2024-11-13T02:07:45.659996100
+Program started at: 2024-11-13T02:07:48.708375300
+Program started at: 2024-11-13T18:58:17.928589300
+Exception occurred at: 2024-11-13T18:58:45.906891200
+Exception type: java.lang.NumberFormatException
+Message: For input string: "qweqw"
+Stack trace: 
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:938)
+	at Controller.scanDouble(Controller.java:201)
+	at Controller.addDrone(Controller.java:261)
+	at Controller.mainMenu(Controller.java:162)
+	at Main.main(Main.java:13)
+---------------------------------------
+Program end: 2024-11-13T18:59:26.376642700

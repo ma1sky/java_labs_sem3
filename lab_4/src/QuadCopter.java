@@ -1,5 +1,9 @@
+import java.io.Serial;
+
 class QuadCopter extends BaseDrone {
     private final String cameraResolution;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public QuadCopter(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
                       double loadCapacity, double maxHeight, String powerType, double size,

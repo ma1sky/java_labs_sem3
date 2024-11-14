@@ -1,5 +1,9 @@
+import java.io.Serial;
+
 class Helicopter extends BaseDrone {
     private final int numberOfBlades;
+    @Serial
+    private static final long serialVersionUID = 3L;
 
     public Helicopter(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
                       double loadCapacity, double maxHeight, String powerType, double size,
