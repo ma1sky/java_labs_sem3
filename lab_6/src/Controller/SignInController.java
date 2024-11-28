@@ -3,10 +3,7 @@ package Controller;
 import Model.User;
 import View.Colors;
 import View.SignInFrame;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.sun.tools.javac.Main;
 
 public class SignInController {
     private final User user;
@@ -15,7 +12,6 @@ public class SignInController {
     public SignInController(User user, SignInFrame view) {
         this.user = user;
         this.view = view;
-
         this.view.addSubmitButtonListener(e -> validateUser());
     }
 
@@ -24,8 +20,8 @@ public class SignInController {
         String enteredPassword = view.getPassword();
 
         if (validateCredentials(enteredLogin, enteredPassword)) {
-            view.setMessage("Login successful!");
-            view.setMessageColor(Colors.GREEN);
+            new MainController();
+            view.frame.setVisible(false);
         } else {
             view.setMessage("Invalid login or password. Try again.");
             view.setMessageColor(Colors.RED);

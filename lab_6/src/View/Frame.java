@@ -14,6 +14,7 @@ public class Frame extends JFrame {
         this.setSize(new Dimension(1200, 720));
         this.setVisible(true);
         this.setBackground(Colors.DARK10);
+        this.setLocationRelativeTo(null);
     }
     public void reload() {
         this.repaint();

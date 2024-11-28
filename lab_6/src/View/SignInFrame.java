@@ -5,17 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class SignInFrame {
-    public static ImageIcon icon = new ImageIcon("./images/icon.png");
-    static public JLabel iconCopter = new JLabel(icon);
+    ImageIcon icon = new ImageIcon("./images/icon.png");
+    JLabel iconCopter = new JLabel(icon);
+
+    public Frame frame = new Frame();
     JPanel panel = new JPanel();
+
     Text title = new Text(Fonts.H1, "Welcome back!", Colors.WHITE100);
     TextField loginField = new TextField("Login");
     TextField passwordField = new TextField("Password");
+
     Button submitButton = new Button("Sign in");
     Text messageLabel = new Text(Fonts.SPAN, "", Colors.WHITE100);
 
     public SignInFrame() {
-        Frame frame = new Frame();
 
         iconCopter.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -46,8 +49,6 @@ public class SignInFrame {
 
         frame.add(panel);
 
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 

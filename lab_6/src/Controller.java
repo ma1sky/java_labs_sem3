@@ -78,41 +78,6 @@ public class Controller {
             default -> throw new IllegalStateException("Unexpected value: " + random.nextInt(4));
         };
     }
-    public static void writeDataBase(ArrayList<BaseDrone> droneArrayList, Path path) throws IOException {
-        ArrayList<String> droneStrings = new ArrayList<String>();
-
-        for (BaseDrone drone : droneArrayList) {
-            droneStrings.add(drone.toString());
-        }
-
-        if (Files.exists(path)) {
-            Files.write(path, droneStrings, StandardOpenOption.TRUNCATE_EXISTING);
-        } else {
-            Files.createFile(path);
-            Files.write(path, droneStrings);
-        }
-        Logs.writeTime("DataBase writing successful.", logs);
-        System.out.println("DataBase writing successful.");
-    }
-    public static ArrayList<BaseDrone> readDataBase(Path path) throws IOException {
-        ArrayList<BaseDrone> droneArrayList = new ArrayList<>();
-        String[] lines = Files.readAllLines(path).toArray(new String[0]);
-
-        for (String line : lines) {
-            String[] parts = line.split(",");
-            switch (Integer.parseInt(parts[0].split(" ")[0])) {
-                case 1 -> droneArrayList.add(new QuadCopter(parts));
-                case 2 -> droneArrayList.add(new Plane(parts));
-                case 3 -> droneArrayList.add(new Helicopter(parts));
-                case 4 -> droneArrayList.add(new HybridDrone(parts));
-                default ->
-                        throw new IllegalStateException("Unexpected value: " + Integer.parseInt(parts[0].split(" ")[0]));
-            }
-        }
-        Logs.writeTime("DataBase reading successful.", logs);
-        System.out.println("DataBase reading successful.");
-        return droneArrayList;
-    }
 
     public static String scanString(String desc) {
         Scanner sc = new Scanner(System.in);
