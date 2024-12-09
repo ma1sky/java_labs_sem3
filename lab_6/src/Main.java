@@ -1,24 +1,25 @@
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
-import Model.User;
-import View.SignInFrame;
-import Controller.SignInController;
+import Controller.ExceptionHandler;
+import Controller.GeneralController;
+import Controller.Logs;
+import Model.Model;
+import View.GeneralView;
 
 public static void main(String[] args) throws IOException {
     Path logs = Path.of("logs.txt");
-    Path data = Path.of("dataBase.bin");
-    Path settings = Path.of("settings.txt");
-    ArrayList<BaseDrone> drones = new ArrayList<>();
 
     try {
         Logs.writeTime("Program started at: ", logs);
-        User user = new User(User.readSettingsFromFile(settings));
-        SignInFrame view = new SignInFrame();
-        new SignInController(user, view);
+
+        GeneralView view = new GeneralView();
+        Model model = new Model();
+        new GeneralController(view, model);
+
         Logs.writeTime("Program end: ", logs);
-    } catch (IOException ex) {
+
+    } catch (IOException | ClassNotFoundException ex) {
         ExceptionHandler.handleException(ex, logs);
     }
 }

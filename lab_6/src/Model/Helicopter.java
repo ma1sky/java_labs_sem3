@@ -1,6 +1,8 @@
+package Model;
+
 import java.io.Serial;
 
-class Helicopter extends BaseDrone {
+public class Helicopter extends BaseDrone {
     private final int numberOfBlades;
     @Serial
     private static final long serialVersionUID = 3L;
@@ -33,6 +35,23 @@ class Helicopter extends BaseDrone {
                 ", weatherResistant=" + weatherResistant +
                 ", numberOfBlades=" + numberOfBlades +
                 '}';
+    }
+
+    public String[][] toTableData() {
+        return new String[][]{
+                {"Type", "Helicopter"},
+                {"Max Range", String.valueOf(maxRange)},
+                {"Max Flight Time", String.valueOf(maxFlightTime)},
+                {"Cruise Speed", String.valueOf(cruiseSpeed)},
+                {"Max Speed", String.valueOf(maxSpeed)},
+                {"Load Capacity", String.valueOf(loadCapacity)},
+                {"Max Height", String.valueOf(maxHeight)},
+                {"Power Type", powerType},
+                {"Size", String.valueOf(size)},
+                {"Takeoff Method", takeoffMethod},
+                {"Weather Resistant", String.valueOf(weatherResistant)},
+                {"Number of Blades", String.valueOf(numberOfBlades)}
+        };
     }
 
     public Helicopter(String[] parts) {

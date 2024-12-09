@@ -1,6 +1,8 @@
+package Model;
+
 import java.io.Serial;
 
-class QuadCopter extends BaseDrone {
+public class QuadCopter extends BaseDrone {
     private final String cameraResolution;
     @Serial
     private static final long serialVersionUID = 1L;
@@ -33,6 +35,23 @@ class QuadCopter extends BaseDrone {
                 ", weatherResistant=" + weatherResistant +
                 ", cameraResolution='" + cameraResolution + '\'' +
                 '}';
+    }
+
+    public String[][] toTableData() {
+        return new String[][]{
+                {"Type", "QuadCopter"},
+                {"Max Range", String.valueOf(getMaxRange())},
+                {"Max Flight Time", String.valueOf(getMaxFlightTime())},
+                {"Cruise Speed", String.valueOf(getCruiseSpeed())},
+                {"Max Speed", String.valueOf(getMaxSpeed())},
+                {"Load Capacity", String.valueOf(getLoadCapacity())},
+                {"Max Height", String.valueOf(getMaxHeight())},
+                {"Power Type", getPowerType()},
+                {"Size", String.valueOf(getSize())},
+                {"Takeoff Method", getTakeoffMethod()},
+                {"Weather Resistant", String.valueOf(isWeatherResistant())},
+                {"Camera Resolution", getCameraResolution()}
+        };
     }
 
     public QuadCopter(String[] parts) {

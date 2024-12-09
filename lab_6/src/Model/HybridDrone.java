@@ -1,6 +1,8 @@
+package Model;
+
 import java.io.Serial;
 
-class HybridDrone extends BaseDrone {
+public class HybridDrone extends BaseDrone {
     private final double batteryCapacity;
     @Serial
     private static final long serialVersionUID = 4L;
@@ -28,6 +30,24 @@ class HybridDrone extends BaseDrone {
                 ", weatherResistant=" + weatherResistant +
                 ", batteryCapacity=" + batteryCapacity +
                 '}';
+    }
+
+    @Override
+    public String[][] toTableData() {
+        return new String[][]{
+                {"Type", "Hybrid Drone"},
+                {"Max Range", String.valueOf(getMaxRange())},
+                {"Max Flight Time", String.valueOf(getMaxFlightTime())},
+                {"Cruise Speed", String.valueOf(getCruiseSpeed())},
+                {"Max Speed", String.valueOf(getMaxSpeed())},
+                {"Load Capacity", String.valueOf(getLoadCapacity())},
+                {"Max Height", String.valueOf(getMaxHeight())},
+                {"Power Type", getPowerType()},
+                {"Size", String.valueOf(getSize())},
+                {"Takeoff Method", getTakeoffMethod()},
+                {"Weather Resistant", String.valueOf(isWeatherResistant())},
+                {"Battery Capacity", String.valueOf(getBatteryCapacity())}
+        };
     }
 
     public HybridDrone(String[] parts) {

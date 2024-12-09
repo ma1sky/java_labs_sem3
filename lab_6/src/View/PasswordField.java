@@ -8,8 +8,8 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class TextField extends JTextField implements FocusListener {
-    private String example;
+public class PasswordField extends JPasswordField implements FocusListener {
+    private final String example;
 
     private final CompoundBorder borderIdle = new CompoundBorder(
             new LineBorder(Colors.DARK30, 2),
@@ -21,8 +21,12 @@ public class TextField extends JTextField implements FocusListener {
             new EmptyBorder(10, 10, 10, 10)
     );
 
-    public TextField(String example) {
+    public PasswordField(String example) {
         this.example = example;
+        configureField();
+    }
+
+    private void configureField() {
         this.setPreferredSize(new Dimension(190, 50));
         this.setMinimumSize(new Dimension(190, 50));
         this.setMaximumSize(new Dimension(190, 50));
@@ -31,6 +35,7 @@ public class TextField extends JTextField implements FocusListener {
         this.setBackground(Colors.DARK10);
         this.setForeground(Colors.DARK30);
         this.setBorder(borderIdle);
+        this.setEchoChar('*');
         this.setCaretColor(Colors.WHITE100);
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.addFocusListener(this);
@@ -39,7 +44,7 @@ public class TextField extends JTextField implements FocusListener {
     @Override
     public void focusGained(FocusEvent e) {
         this.setBorder(borderActive);
-        if (isExampleText()) {
+        if (isExamplePassword()) {
             clearField();
         }
     }
@@ -52,12 +57,12 @@ public class TextField extends JTextField implements FocusListener {
         }
     }
 
-    private boolean isExampleText() {
-        return this.getText().equals(example);
+    private boolean isExamplePassword() {
+        return new String(this.getPassword()).equals(example);
     }
 
     private boolean isEmpty() {
-        return this.getText().isEmpty();
+        return this.getPassword().length == 0;
     }
 
     private void clearField() {
@@ -65,13 +70,8 @@ public class TextField extends JTextField implements FocusListener {
         this.setForeground(Colors.WHITE100);
     }
 
-    public void resetField() {
+    private void resetField() {
         this.setForeground(Colors.DARK30);
         this.setText(example);
-    }
-
-    public void setExample(String example) {
-        this.setForeground(Colors.DARK30);
-        this.example = example;
     }
 }

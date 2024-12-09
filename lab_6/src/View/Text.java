@@ -9,7 +9,6 @@ public class Text extends JLabel {
         this.setFont(font);
         this.setText(text);
         this.setForeground(color);
-        this.setBorder(new EmptyBorder(5,15,5,15));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 }

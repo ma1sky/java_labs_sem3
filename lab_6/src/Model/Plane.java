@@ -1,7 +1,9 @@
+package Model;
+
 import java.io.Serial;
 import java.io.Serializable;
 
-class Plane extends BaseDrone implements Serializable {
+public class Plane extends BaseDrone implements Serializable {
     private final double wingSpan;
     @Serial
     private static final long serialVersionUID = 2L;
@@ -16,7 +18,7 @@ class Plane extends BaseDrone implements Serializable {
 
     @Override
     public int getType() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -34,6 +36,23 @@ class Plane extends BaseDrone implements Serializable {
                 ", weatherResistant=" + weatherResistant +
                 ", wingSpan=" + wingSpan +
                 '}';
+    }
+
+    public String[][] toTableData() {
+        return new String[][]{
+                {"Type", "Plane"},
+                {"Max Range", String.valueOf(getMaxRange())},
+                {"Max Flight Time", String.valueOf(getMaxFlightTime())},
+                {"Cruise Speed", String.valueOf(getCruiseSpeed())},
+                {"Max Speed", String.valueOf(getMaxSpeed())},
+                {"Load Capacity", String.valueOf(getLoadCapacity())},
+                {"Max Height", String.valueOf(getMaxHeight())},
+                {"Power Type", getPowerType()},
+                {"Size", String.valueOf(getSize())},
+                {"Takeoff Method", getTakeoffMethod()},
+                {"Weather Resistant", String.valueOf(isWeatherResistant())},
+                {"Wing Span", String.valueOf(getWingSpan())}
+        };
     }
 
     public Plane(String[] parts) {

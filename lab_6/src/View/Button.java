@@ -12,7 +12,7 @@ public class Button extends JButton{
         this.setText(text);
         this.setFocusable(false);
         this.setPreferredSize(new Dimension(190, 50));
-        this.setMinimumSize(new Dimension(190, 50));
+        this.setMinimumSize(new Dimension(100, 30));
         this.setMaximumSize(new Dimension(190, 50));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.setBorder(new EmptyBorder(1,1,1,1));

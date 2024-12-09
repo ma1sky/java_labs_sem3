@@ -1,3 +1,5 @@
+package Controller;
+
 import Model.User;
 
 import java.io.FileWriter;
@@ -5,13 +7,15 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 
+import static Controller.GeneralController.readSettings;
+
 public class ExceptionHandler {
     static Path settings = Path.of("settings.txt");
     static User user;
 
     static {
         try {
-            user = new User(User.readSettingsFromFile(settings));
+            user = new User(readSettings(settings));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

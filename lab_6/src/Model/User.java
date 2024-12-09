@@ -50,8 +50,4 @@ public class User {
         this.debugging = Boolean.parseBoolean(settings[3].split("=")[1].trim());
         this.autotests = Boolean.parseBoolean(settings[4].split("=")[1].trim());
     }
-
-    public static String[] readSettingsFromFile(Path path) throws IOException {
-        return Files.readAllLines(path).toArray(new String[0])[0].split(" ");
-    }
 }

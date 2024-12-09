@@ -1,8 +1,13 @@
+package Model;
+
 import java.io.Serializable;
 
 interface Drone extends Serializable {
     int getType();
     String getPurpose();
+
+    String[][] toTableData();
+
     double getMaxRange();
     double getMaxFlightTime();
     double getCruiseSpeed();

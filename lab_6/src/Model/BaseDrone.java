@@ -1,4 +1,6 @@
-abstract class BaseDrone implements Drone {
+package Model;
+
+public abstract class BaseDrone implements Drone {
     protected double maxRange;
     protected double maxFlightTime;
     protected double cruiseSpeed;
@@ -24,6 +26,9 @@ abstract class BaseDrone implements Drone {
         this.takeoffMethod = takeoffMethod;
         this.weatherResistant = weatherResistant;
     }
+
+    @Override
+    public abstract  String[][] toTableData();
 
     @Override
     public double getMaxRange() {

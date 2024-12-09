@@ -1,27 +1,29 @@
 package Controller;
 
-import Model.User;
+import Model.Model;
 import View.Colors;
-import View.SignInFrame;
-import com.sun.tools.javac.Main;
+import View.SignInPanel;
+
 
 public class SignInController {
-    private final User user;
-    private final SignInFrame view;
+    private final Model model;
+    private final SignInPanel view;
+    private final GeneralController callback;
 
-    public SignInController(User user, SignInFrame view) {
-        this.user = user;
+    public SignInController(Model model, SignInPanel view, GeneralController callback) {
+        this.model = model;
         this.view = view;
+        this.callback = callback;
         this.view.addSubmitButtonListener(e -> validateUser());
     }
 
     private void validateUser() {
         String enteredLogin = view.getLogin();
-        String enteredPassword = view.getPassword();
+        String enteredPassword = new String(view.getPassword());
 
         if (validateCredentials(enteredLogin, enteredPassword)) {
-            new MainController();
-            view.frame.setVisible(false);
+            view.setVisible(false);
+            callback.startWorkPanel();
         } else {
             view.setMessage("Invalid login or password. Try again.");
             view.setMessageColor(Colors.RED);
@@ -29,6 +31,6 @@ public class SignInController {
     }
 
     private boolean validateCredentials(String login, String password) {
-        return login.equals(user.getLogin()) && password.equals(user.getPassword());
+        return login.equals(model.getUser().getLogin()) && password.equals(model.getUser().getPassword());
     }
 }
