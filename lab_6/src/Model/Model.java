@@ -10,7 +10,7 @@ import static Controller.GeneralController.readSettings;
 
 public class Model {
     public static Path logs = Path.of("logs.txt");
-    Path dataPath = Path.of("dataBase.bin");
+    public Path dataPath = Path.of("dataBase.bin");
     Path settingsPath = Path.of("settings.txt");
     private User user;
 
@@ -21,7 +21,9 @@ public class Model {
         this.user = new User(readSettings(settingsPath));
         this.data = GeneralController.readDataBase(dataPath);
     }
+    public void saveData() {
 
+    }
     public User getUser() {
         return user;
     }

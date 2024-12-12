@@ -3,7 +3,7 @@ package Model;
 import java.io.Serial;
 
 public class HybridDrone extends BaseDrone {
-    private final double batteryCapacity;
+    private double batteryCapacity;
     @Serial
     private static final long serialVersionUID = 4L;
 
@@ -62,6 +62,24 @@ public class HybridDrone extends BaseDrone {
                 parts[8].split("=")[1].replace("'", "").trim(),
                 Boolean.parseBoolean(parts[9].split("=")[1]));
         this.batteryCapacity = Double.parseDouble(parts[10].split("=")[1].replace("}", "").trim());
+    }
+
+    public boolean changeData(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
+                              double loadCapacity, double maxHeight, String powerType, double size,
+                              String takeoffMethod, boolean weatherResistant, double batteryCapacity) {
+        this.maxRange = maxRange;
+        this.maxFlightTime = maxFlightTime;
+        this.cruiseSpeed = cruiseSpeed;
+        this.maxSpeed = maxSpeed;
+        this.loadCapacity = loadCapacity;
+        this.maxHeight = maxHeight;
+        this.powerType = powerType;
+        this.size = size;
+        this.takeoffMethod = takeoffMethod;
+        this.weatherResistant = weatherResistant;
+        this.batteryCapacity = batteryCapacity;
+
+        return true;
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 public class Plane extends BaseDrone implements Serializable {
-    private final double wingSpan;
+    private double wingSpan;
     @Serial
     private static final long serialVersionUID = 2L;
 
@@ -36,6 +36,24 @@ public class Plane extends BaseDrone implements Serializable {
                 ", weatherResistant=" + weatherResistant +
                 ", wingSpan=" + wingSpan +
                 '}';
+    }
+
+    public boolean changeData(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
+                              double loadCapacity, double maxHeight, String powerType, double size,
+                              String takeoffMethod, boolean weatherResistant, double wingSpan) {
+        this.maxRange = maxRange;
+        this.maxFlightTime = maxFlightTime;
+        this.cruiseSpeed = cruiseSpeed;
+        this.maxSpeed = maxSpeed;
+        this.loadCapacity = loadCapacity;
+        this.maxHeight = maxHeight;
+        this.powerType = powerType;
+        this.size = size;
+        this.takeoffMethod = takeoffMethod;
+        this.weatherResistant = weatherResistant;
+        this.wingSpan = wingSpan;
+
+        return true;
     }
 
     public String[][] toTableData() {

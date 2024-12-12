@@ -2,6 +2,8 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GeneralView extends JFrame {
     static public ImageIcon icon = new ImageIcon("./images/icon.png");
@@ -14,7 +16,7 @@ public class GeneralView extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
         this.setIconImage(icon.getImage());
-        this.setSize(new Dimension(1200, 720));
+        this.setSize(new Dimension(1500, 920));
         this.setBackground(Colors.DARK10);
         this.setLocationRelativeTo(null);
 
@@ -22,7 +24,7 @@ public class GeneralView extends JFrame {
         this.add(signInPanel,"SignInPanel");
         JScrollPane scrollWorkPane = new JScrollPane(workPanel);
         scrollWorkPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollWorkPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollWorkPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollWorkPane.setBorder(BorderFactory.createEmptyBorder());
         this.add(scrollWorkPane, "workPanel");
 
@@ -31,5 +33,9 @@ public class GeneralView extends JFrame {
 
     public void startWorkPanel() {
         layout.show(this.getContentPane(), "workPanel");
+    }
+
+    public void saveOnClose(WindowAdapter adapter) {
+        this.addWindowListener(adapter);
     }
 }

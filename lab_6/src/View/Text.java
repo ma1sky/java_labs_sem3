@@ -10,5 +10,6 @@ public class Text extends JLabel {
         this.setText(text);
         this.setForeground(color);
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.setPreferredSize(new Dimension(190, 50));
     }
 }

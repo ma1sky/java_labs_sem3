@@ -3,7 +3,7 @@ package Model;
 import java.io.Serial;
 
 public class QuadCopter extends BaseDrone {
-    private final String cameraResolution;
+    private String cameraResolution;
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +35,24 @@ public class QuadCopter extends BaseDrone {
                 ", weatherResistant=" + weatherResistant +
                 ", cameraResolution='" + cameraResolution + '\'' +
                 '}';
+    }
+
+    public boolean changeData(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
+                              double loadCapacity, double maxHeight, String powerType, double size,
+                              String takeoffMethod, boolean weatherResistant, String cameraResolution) {
+        this.maxRange = maxRange;
+        this.maxFlightTime = maxFlightTime;
+        this.cruiseSpeed = cruiseSpeed;
+        this.maxSpeed = maxSpeed;
+        this.loadCapacity = loadCapacity;
+        this.maxHeight = maxHeight;
+        this.powerType = powerType;
+        this.size = size;
+        this.takeoffMethod = takeoffMethod;
+        this.weatherResistant = weatherResistant;
+        this.cameraResolution = cameraResolution;
+
+        return true;
     }
 
     public String[][] toTableData() {

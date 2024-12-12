@@ -3,6 +3,8 @@ package Controller;
 import Model.Model;
 import View.GeneralView;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -29,6 +31,7 @@ public class GeneralController {
         this.view = view;
         this.model = model;
         startSigningIn();
+        save();
     }
 
     public void startSigningIn() {
@@ -38,6 +41,19 @@ public class GeneralController {
     public void startWorkPanel() {
         this.view.startWorkPanel();
         new WorkPanelController(this.model, this.view.workPanel, this);
+    }
+
+    public void save() {
+        this.view.saveOnClose(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    GeneralController.saveDataBase(model.getData(), model.dataPath);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     public static ArrayList<BaseDrone> readDataBase(Path path) throws IOException, ClassNotFoundException {
@@ -138,4 +154,49 @@ public class GeneralController {
             default -> throw new IllegalStateException("Unexpected value: " + random.nextInt(4));
         };
     }
+
+    public static boolean validateBool(String data) {
+        if (data == null) {
+            return false;
+        }
+        String trimmedData = data.trim();
+        return trimmedData.equalsIgnoreCase("true") || trimmedData.equalsIgnoreCase("false");
+    }
+    public static boolean validateString(String data, int minLength, int maxLength) {
+        if (data == null || data.trim().isEmpty()) {
+            return false;
+        }
+        String trimmedData = data.trim();
+        for (char c : trimmedData.toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean validateDouble(String data) {
+        if (data == null) {
+            return false;
+        }
+
+        try {
+            Double.parseDouble(data.trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    public static boolean validateInt(String data) {
+        if (data == null) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(data.trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }

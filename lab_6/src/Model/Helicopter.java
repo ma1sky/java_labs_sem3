@@ -3,7 +3,7 @@ package Model;
 import java.io.Serial;
 
 public class Helicopter extends BaseDrone {
-    private final int numberOfBlades;
+    private int numberOfBlades;
     @Serial
     private static final long serialVersionUID = 3L;
 
@@ -35,6 +35,24 @@ public class Helicopter extends BaseDrone {
                 ", weatherResistant=" + weatherResistant +
                 ", numberOfBlades=" + numberOfBlades +
                 '}';
+    }
+
+    public boolean changeData(double maxRange, double maxFlightTime, double cruiseSpeed, double maxSpeed,
+                              double loadCapacity, double maxHeight, String powerType, double size,
+                              String takeoffMethod, boolean weatherResistant, int numberOfBlades) {
+        this.maxRange = maxRange;
+        this.maxFlightTime = maxFlightTime;
+        this.cruiseSpeed = cruiseSpeed;
+        this.maxSpeed = maxSpeed;
+        this.loadCapacity = loadCapacity;
+        this.maxHeight = maxHeight;
+        this.powerType = powerType;
+        this.size = size;
+        this.takeoffMethod = takeoffMethod;
+        this.weatherResistant = weatherResistant;
+        this.numberOfBlades = numberOfBlades;
+
+        return true;
     }
 
     public String[][] toTableData() {
