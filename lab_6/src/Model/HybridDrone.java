@@ -15,6 +15,11 @@ public class HybridDrone extends BaseDrone {
         this.batteryCapacity = batteryCapacity;
     }
 
+    public HybridDrone() {
+        super();
+        this.batteryCapacity = 0;
+    }
+
     @Override
     public String toString() {
         return "4 {" +

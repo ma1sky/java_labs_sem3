@@ -16,6 +16,11 @@ public class Plane extends BaseDrone implements Serializable {
         this.wingSpan = wingSpan;
     }
 
+    public Plane() {
+        super();
+        this.wingSpan = 0;
+    }
+
     @Override
     public int getType() {
         return 2;

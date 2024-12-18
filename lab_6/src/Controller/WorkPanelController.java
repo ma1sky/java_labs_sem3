@@ -8,6 +8,7 @@ import Model.HybridDrone;
 import Model.BaseDrone;
 import Model.Plane;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class WorkPanelController extends Component {
     private final Model model;
@@ -20,10 +21,35 @@ public class WorkPanelController extends Component {
         this.callback = callback;
 
         initializeDroneTables();
+        addDrone();
     }
 
     private void initializeDroneTables() {
         view.addDroneTables(model.data, this);
+    }
+
+    public void addDrone() {
+        view.addAddButtonListener(e -> {
+            String selectedItem = view.showDropDown();
+
+            if (selectedItem != null) {
+                BaseDrone newDrone = null;
+
+                switch (selectedItem) {
+                    case "Helicopter" -> newDrone = new Helicopter();
+                    case "QuadCopter" -> newDrone = new QuadCopter();
+                    case "Hybrid Drone" -> newDrone = new HybridDrone();
+                    case "Plane" -> newDrone = new Plane();
+                    default -> {
+                        view.showError("Unknown drone type.");
+                        return;
+                    }
+                }
+
+                model.data.add(newDrone);
+                view.addNewDrone(newDrone.toTableData(), this);
+            }
+        });
     }
 
     public boolean updateDroneData(int id, String[] data) {

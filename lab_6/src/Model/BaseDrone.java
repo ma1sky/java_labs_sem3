@@ -27,6 +27,19 @@ public abstract class BaseDrone implements Drone {
         this.weatherResistant = weatherResistant;
     }
 
+    public BaseDrone() {
+        this.maxRange = 0;
+        this.maxFlightTime = 0;
+        this.cruiseSpeed = 0;
+        this.maxSpeed = 0;
+        this.loadCapacity = 0;
+        this.maxHeight = 0;
+        this.powerType = null;
+        this.size = 0;
+        this.takeoffMethod = null;
+        this.weatherResistant = false;
+    }
+
     @Override
     public abstract  String[][] toTableData();
 

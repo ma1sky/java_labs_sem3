@@ -15,6 +15,11 @@ public class Helicopter extends BaseDrone {
         this.numberOfBlades = numberOfBlades;
     }
 
+    public Helicopter() {
+        super();
+        this.numberOfBlades = 0;
+    }
+
     @Override
     public int getType() {
         return 3;

@@ -15,6 +15,11 @@ public class QuadCopter extends BaseDrone {
         this.cameraResolution = cameraResolution;
     }
 
+    public QuadCopter() {
+        super();
+        this.cameraResolution = null;
+    }
+
     @Override
     public int getType() {
         return 1;

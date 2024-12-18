@@ -4,6 +4,8 @@ import Model.Model;
 import View.Colors;
 import View.SignInPanel;
 
+import java.io.IOException;
+
 
 public class SignInController {
     private final Model model;
@@ -23,7 +25,11 @@ public class SignInController {
 
         if (validateCredentials(enteredLogin, enteredPassword)) {
             view.setVisible(false);
-            callback.startWorkPanel();
+            try {
+                callback.startWorkPanel();
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             view.setMessage("Invalid login or password. Try again.");
             view.setMessageColor(Colors.RED);

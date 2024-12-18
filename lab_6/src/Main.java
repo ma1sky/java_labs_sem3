@@ -7,19 +7,21 @@ import Controller.Logs;
 import Model.Model;
 import View.GeneralView;
 
-public static void main(String[] args) throws IOException {
-    Path logs = Path.of("logs.txt");
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Path logs = Path.of("logs.txt");
 
-    try {
-        Logs.writeTime("Program started at: ", logs);
+        try {
+            Logs.writeTime("Program started at: ", logs);
 
-        GeneralView view = new GeneralView();
-        Model model = new Model();
-        new GeneralController(view, model);
+            GeneralView view = new GeneralView();
+            Model model = new Model();
+            new GeneralController(view, model);
 
-        Logs.writeTime("Program end: ", logs);
+            Logs.writeTime("Program end: ", logs);
 
-    } catch (IOException | ClassNotFoundException ex) {
-        ExceptionHandler.handleException(ex, logs);
+        } catch (IOException | ClassNotFoundException ex) {
+            ExceptionHandler.handleException(ex, logs);
+        }
     }
 }

@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
 
 public class DroneItem extends JPanel {
-    private final WorkPanelController controller; // Поле для хранения ссылки на контроллер
+    private final WorkPanelController controller;
     private final Button editButton;
     private final Button deleteButton;
     private final Button saveButton;
@@ -70,6 +70,11 @@ public class DroneItem extends JPanel {
         for (JPanel row : rows) {
             this.add(row);
         }
+    }
+
+    public void setIndex(int ind) {
+        idField.setText(String.valueOf(ind));
+        idField.setExample(String.valueOf(ind));
     }
 
     public void toggleEditMode() {

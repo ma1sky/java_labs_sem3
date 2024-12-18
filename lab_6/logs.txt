@@ -730,3 +730,107 @@ DataBase writing successful.2024-12-12T00:45:27.417882900
 Program started at: 2024-12-12T00:45:30.164988700
 Program end: 2024-12-12T00:45:30.712139100
 DataBase writing successful.2024-12-12T00:45:38.101807
+Program started at: 2024-12-12T10:31:11.001233300
+Program end: 2024-12-12T10:31:11.257553700
+DataBase writing successful.2024-12-12T10:31:32.169134200
+Program started at: 2024-12-12T11:44:20.660390100
+Exception occurred at: 2024-12-12T11:44:20.869980400
+Exception type: java.io.InvalidClassException
+Message: Model.BaseDrone; local class incompatible: stream classdesc serialVersionUID = 4727375749015949157, local class serialVersionUID = 3703062596140227888
+Stack trace: 
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:604)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2246)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1750)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:528)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:486)
+	at Controller.GeneralController.readDataBase(GeneralController.java:71)
+	at Model.Model.<init>(Model.java:22)
+	at Main.main(Main.java:17)
+---------------------------------------
+Program started at: 2024-12-12T11:45:56.367557400
+Exception occurred at: 2024-12-12T11:45:56.577202600
+Exception type: java.io.InvalidClassException
+Message: Model.BaseDrone; local class incompatible: stream classdesc serialVersionUID = 4727375749015949157, local class serialVersionUID = 3703062596140227888
+Stack trace: 
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:604)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2246)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1750)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:528)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:486)
+	at Controller.GeneralController.readDataBase(GeneralController.java:71)
+	at Model.Model.<init>(Model.java:22)
+	at Main.main(Main.java:17)
+---------------------------------------
+Program started at: 2024-12-12T11:48:22.942728800
+Exception occurred at: 2024-12-12T11:48:23.158382500
+Exception type: java.io.InvalidClassException
+Message: Model.BaseDrone; local class incompatible: stream classdesc serialVersionUID = 4727375749015949157, local class serialVersionUID = 3703062596140227888
+Stack trace: 
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:604)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2072)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1915)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2246)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1750)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:528)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:486)
+	at Controller.GeneralController.readDataBase(GeneralController.java:71)
+	at Model.Model.<init>(Model.java:29)
+	at Main.main(Main.java:17)
+---------------------------------------
+Program started at: 2024-12-12T11:49:20.076346800
+Program end: 2024-12-12T11:49:20.253613100
+DataBase writing successful.2024-12-12T11:49:48.217453900
+Program started at: 2024-12-12T11:50:07.301722300
+Program end: 2024-12-12T11:50:07.520915900
+DataBase writing successful.2024-12-12T11:50:46.269261600
+Program started at: 2024-12-12T11:52:39.233656800
+Program end: 2024-12-12T11:52:39.443006900
+DataBase writing successful.2024-12-12T11:53:15.830692500
+Program started at: 2024-12-12T11:57:25.760022500
+Program end: 2024-12-12T11:57:25.985217300
+DataBase writing successful.2024-12-12T11:58:26.854856400
+Program started at: 2024-12-12T12:00:24.707126500
+Program end: 2024-12-12T12:00:24.920079500
+DataBase writing successful.2024-12-12T12:00:52.432404700
+Program started at: 2024-12-12T12:03:12.955669300
+Program end: 2024-12-12T12:03:13.176182200
+DataBase writing successful.2024-12-12T12:03:29.686871700
+Program started at: 2024-12-12T12:03:43.416783100
+Program end: 2024-12-12T12:03:43.643928500
+DataBase writing successful.2024-12-12T12:04:16.834799400
+Program started at: 2024-12-12T12:04:20.011990400
+Program end: 2024-12-12T12:04:20.221646200
+DataBase writing successful.2024-12-12T12:04:37.798238700
+Program started at: 2024-12-12T12:09:39.877472100
+Program end: 2024-12-12T12:09:40.089353300
+Program started at: 2024-12-12T12:11:27.571624600
+Program end: 2024-12-12T12:11:27.798505800
+DataBase writing successful.2024-12-12T12:12:13.481930800
+Program started at: 2024-12-12T12:12:32.019163600
+Program end: 2024-12-12T12:12:32.234273
+DataBase writing successful.2024-12-12T12:13:01.018345700
+Program started at: 2024-12-12T12:13:05.619418200
+Program end: 2024-12-12T12:13:05.832050100
+DataBase writing successful.2024-12-12T12:13:27.112802600
+Program started at: 2024-12-12T12:13:29.106225300
+Program end: 2024-12-12T12:13:29.303049200
+DataBase writing successful.2024-12-12T12:14:00.602546800
+Program started at: 2024-12-12T12:18:26.791609800
+Program end: 2024-12-12T12:18:27.011174400
+DataBase writing successful.2024-12-12T12:19:09.760839400
+Program started at: 2024-12-18T01:52:15.211235400
+Program end: 2024-12-18T01:52:15.879484100
+DataBase writing successful.2024-12-18T01:52:25.532885500
+Program started at: 2024-12-18T01:54:13.278289800
+Program end: 2024-12-18T01:54:13.870626200
+DataBase writing successful.2024-12-18T01:54:15.113261700
