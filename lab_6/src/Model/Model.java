@@ -16,10 +16,10 @@ public class Model {
 
     public ArrayList<BaseDrone> data;
 
-    public Model(ArrayList<BaseDrone> data) throws IOException, ClassNotFoundException {
+    public Model() throws IOException, ClassNotFoundException {
 
         this.user = new User(readSettings(settingsPath));
-        this.data = null;
+        this.data = GeneralController.readDataBase(dataPath);
     }
     public void saveData() {
 
