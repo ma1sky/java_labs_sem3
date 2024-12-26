@@ -11,10 +11,12 @@ private static ServerSocket server;
 private static ObjectInputStream in;
 private static ObjectOutputStream out;
 private static ArrayList<BaseDrone> data = new ArrayList<>();
+private static int PORT = 1984;
+private static String IP = "127.0.0.1";
 
 public static void main() {
     try {
-        server = new ServerSocket(1984);
+        server = new ServerSocket(PORT,1, InetAddress.getByName(IP));
         System.out.println("Server started!");
 
         clientSocket = server.accept();
@@ -52,15 +54,13 @@ public static void main() {
 
 private static void receiveData(SecretKey secretKey) throws IOException {
     try {
-        int totalParts = in.readInt(); // Читаем количество частей
+        int totalParts = in.readInt();
         for (int i = 0; i < totalParts; i++) {
-            byte[] encryptedData = (byte[]) in.readObject(); // Читаем зашифрованные данные
-            byte[] checksum = (byte[]) in.readObject(); // Читаем контрольную сумму
+            byte[] encryptedData = (byte[]) in.readObject();
+            byte[] checksum = (byte[]) in.readObject();
 
-            // Дешифрование
             byte[] decryptedData = decrypt(encryptedData, secretKey);
 
-            // Проверка контрольной суммы
             if (MessageDigest.isEqual(checksum, computeChecksum(decryptedData))) {
                 ArrayList<BaseDrone> drones = (ArrayList<BaseDrone>) deserialize(decryptedData);
                 data.addAll(drones);

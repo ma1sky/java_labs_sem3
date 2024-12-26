@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.PublicKey;
@@ -17,11 +18,13 @@ static ArrayList<BaseDrone> data = new ArrayList<>();
 private static ObjectOutputStream out;
 private static ObjectInputStream in;
 private static SecretKey secretKey = null;
+private static int PORT = 1984;
+private static String IP = "127.0.0.1";
 
 public static void main() {
     try {
         Thread.sleep(2000);
-        socket = new Socket("localhost", 1984);
+        socket = new Socket(InetAddress.getByName(IP), PORT);
         out = new ObjectOutputStream(socket.getOutputStream());
         in = new ObjectInputStream(socket.getInputStream());
 
@@ -41,10 +44,8 @@ public static void main() {
         int totalParts = 50;
         int partSize = data.size() / totalParts;
 
-        // Отправляем количество частей
         out.writeInt(totalParts);
 
-        // Отправляем данные по частям
         for (int i = 0; i < totalParts; i++) {
             int start = i * partSize;
             int end = (i == totalParts - 1) ? data.size() : start + partSize;
@@ -54,8 +55,8 @@ public static void main() {
             byte[] checksum = computeChecksum(serializedData);
             byte[] encryptedData = encrypt(serializedData);
 
-            out.writeObject(encryptedData); // Отправляем зашифрованные данные
-            out.writeObject(checksum); // Отправляем контрольную сумму
+            out.writeObject(encryptedData);
+            out.writeObject(checksum);
             out.flush();
         }
 
